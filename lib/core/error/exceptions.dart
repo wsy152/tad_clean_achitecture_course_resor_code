@@ -1,0 +1,1 @@
+class ServerException extends Exception{}
