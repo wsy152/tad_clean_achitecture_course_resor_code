@@ -17,8 +17,11 @@ class NumberTriviaRepositortyImpl implements NumberTriviaRepository {
       required this.networkInfo});
 
   @override
-  Future<Either<Failure, NumberTrivia>> getConreteNumberTrivia(int number) {
-    throw UnimplementedError();
+  Future<Either<Failure, NumberTrivia>> getConreteNumberTrivia(int number) async{
+    networkInfo.isConnected;
+    final remoteTrivia = await remoteDataSource.getConcreteNumberTrivia(number);
+    localDataSource.cacheNumberTrivia(remoteTrivia);
+    return Right(remoteTrivia);    
   }
 
   @override
