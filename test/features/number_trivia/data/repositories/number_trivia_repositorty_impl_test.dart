@@ -111,28 +111,28 @@ void main() {
       test(
           'should return last locally cached data when the cackewd data is present',
           () async {
-        when(mockLocalDataSource.getlastNumberTrivia())
+        when(mockLocalDataSource.getLastNumberTrivia())
             .thenAnswer((_) async => tNumberTrivialModel);
 
         final result = await repository.getConreteNumberTrivia(tNumber);
 
         verifyZeroInteractions(mockRemoteDataSource);
 
-        verify(mockLocalDataSource.getlastNumberTrivia());
+        verify(mockLocalDataSource.getLastNumberTrivia());
 
         expect(result, equals(const Right(tNumberTrivia)));
       });
 
       test('should return cache failure when there is no cached data present',
           () async {
-        when(mockLocalDataSource.getlastNumberTrivia())
+        when(mockLocalDataSource.getLastNumberTrivia())
             .thenThrow(CacheException());
 
         final result = await repository.getConreteNumberTrivia(tNumber);
 
         verifyZeroInteractions(mockRemoteDataSource);
 
-        verify(mockLocalDataSource.getlastNumberTrivia());
+        verify(mockLocalDataSource.getLastNumberTrivia());
 
         expect(result, equals(Left(CacheFailure())));
       });
@@ -195,28 +195,28 @@ void main() {
       test(
           'should return last locally cached data when the cackewd data is present',
           () async {
-        when(mockLocalDataSource.getlastNumberTrivia())
+        when(mockLocalDataSource.getLastNumberTrivia())
             .thenAnswer((_) async => tNumberTrivialModel);
 
         final result = await repository.getRandomNumberTrivia();
 
         verifyZeroInteractions(mockRemoteDataSource);
 
-        verify(mockLocalDataSource.getlastNumberTrivia());
+        verify(mockLocalDataSource.getLastNumberTrivia());
 
         expect(result, equals(const Right(tNumberTrivia)));
       });
 
       test('should return cache failure when there is no cached data present',
           () async {
-        when(mockLocalDataSource.getlastNumberTrivia())
+        when(mockLocalDataSource.getLastNumberTrivia())
             .thenThrow(CacheException());
 
         final result = await repository.getRandomNumberTrivia();
 
         verifyZeroInteractions(mockRemoteDataSource);
 
-        verify(mockLocalDataSource.getlastNumberTrivia());
+        verify(mockLocalDataSource.getLastNumberTrivia());
 
         expect(result, equals(Left(CacheFailure())));
       });
