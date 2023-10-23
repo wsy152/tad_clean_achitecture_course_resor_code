@@ -32,9 +32,7 @@ class NumberTriviaRepositortyImpl implements NumberTriviaRepository {
   }
 
 
-  Future<Either<Failure, NumberTrivia>> _getTrivia(
-      _ConcreteOrRandomChooser getConcreteOrRandom)async {
-    
+  Future<Either<Failure, NumberTrivia>> _getTrivia(_ConcreteOrRandomChooser getConcreteOrRandom)async {    
 
    if (await networkInfo.isConnected) {
       try {
@@ -52,9 +50,5 @@ class NumberTriviaRepositortyImpl implements NumberTriviaRepository {
         return Left(CacheFailure());
       }
     }
-
   }
-
-
-
 }
